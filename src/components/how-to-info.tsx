@@ -116,6 +116,23 @@ const pageInfo: Record<HowToInfoProps['pageKey'], { title: string; description: 
               <li><strong>Max Charge Rate (kW):</strong> Your EV charger's maximum power output.</li>
             </ul>
           </li>
+          <h3 className="font-semibold text-foreground pt-2">EV Charging Advisory:</h3>
+ <ul className="list-disc list-inside space-y-1 pl-4">
+ <li>When you input your EV's charging needs (Charge Required, Charge By Time, Max Charge Rate), the advisory incorporates this into its calculations.</li>
+ <li>The system simulates charging throughout the relevant period (today or overnight) considering:</li>
+ <ul className="list-disc list-inside space-y-1 pl-6">
+ <li>Your EV's total energy requirement (kWh).</li>
+ <li>The maximum rate (kW) your charger can supply per hour.</li>
+ <li>The deadline by which the EV needs to be charged.</li>
+ <li>Available solar energy generation during the period.</li>
+ <li>Current battery level and capacity.</li>
+ <li>Defined cheap electricity tariff periods.</li>
+ </ul>
+ <li>The advice will prioritize using your own solar energy and stored battery power first, as this is typically the most cost-effective.</li>
+ <li>If solar and battery are not sufficient, the advisory will recommend grid charging, primarily during your defined cheap tariff periods, to meet the remaining charge requirement by the deadline.</li>
+ <li>The recommended grid charge amount and window are the results of this optimization process, aiming to balance cost savings with ensuring the EV is ready when you need it.</li>
+ </ul>
+
           <li><strong>Forecast & Configuration Used:</strong> Summarizes the key data points (estimated generation, battery details, cheap tariffs) currently being used to generate the advice.</li>
         </ul>
         <p><strong>How it Works:</strong> The system calculates expected solar generation, compares it against your hourly consumption and EV needs, and factors in your battery's state, capacity, target charge, along with cheap tariff times, to provide recommendations on when and how much to charge from the grid or utilize solar/battery power.</p>
